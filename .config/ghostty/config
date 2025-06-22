@@ -1,0 +1,26 @@
+background-opacity = 0.9
+theme = Ghostty Default StyleDark
+window-title-font-family = Ghostty
+title = Ghostty
+background = #292c33
+background-opacity = 0.9
+background-blur-radius = 20
+selection-background = #ffffff
+selection-foreground = #292c33
+selection-invert-fg-bg = true
+cursor-color = #ffffff
+cursor-text = #363a43
+cursor-style = bar
+cursor-style-blink = true
+palette = 1=#bf6b69
+palette = 2=#b7bd73
+palette = 3=#e9c880
+palette = 4=#88a1bb
+palette = 5=#ad95b8
+palette = 6=#95bdb7
+palette = 9=#c55757
+palette = 10=#bcc95f
+palette = 11=#e1c65e
+palette = 12=#83a5d6
+palette = 13=#bc99d4
+palette = 14=#83beb1
