@@ -1,2 +1,12 @@
+brew "git"
+brew "zsh"
+brew "bash"  
+brew "fzf"
+brew "bat"
+brew "z"
+brew "eza"
+
 tap "homebrew/cask"
 cask "ghostty"
+cask "telegram"
+cask "google-chrome"
