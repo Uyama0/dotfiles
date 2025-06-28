@@ -5,3 +5,6 @@ alias lt='eza --tree --icons'       # tree output
 
 alias c='clear'
 alias ..='cd ..'
+
+[ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
