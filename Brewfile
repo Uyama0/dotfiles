@@ -12,6 +12,8 @@ brew "eza"
 brew "nvm"
 brew "node"
 brew "zsh-autosuggestions"
+brew "kubectl"
+brew "k9s"
 
 cask "ghostty"
 cask "telegram"
