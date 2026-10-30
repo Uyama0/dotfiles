@@ -1,8 +1,10 @@
+# eza - a modern replacement for ls
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -lh --icons'          # detailed list
 alias la='eza -a --icons'           # with hidden files
 alias lt='eza --tree --icons'       # tree output
 
+# common aliases
 alias c='clear'
 alias ..='cd ..'
 
@@ -10,3 +12,10 @@ alias pip=/usr/local/bin/pip3
 
 [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# aliases (path resolved through the ~/.zshrc symlink)
+source "${${(%):-%x}:A:h}/aliases.zsh"
+
+# work config (not in public repo)
+[ -f "$HOME/.zshrc.work" ] && source "$HOME/.zshrc.work"

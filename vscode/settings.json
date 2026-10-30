@@ -1,0 +1,41 @@
+{
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "editor.linkedEditing": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "continue.showInlineTip": false,
+  "window.confirmSaveUntitledWorkspace": false,
+  "kilo-code.debug": false,
+  "kilo-code.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show",
+    "npm run lint",
+  ],
+  "kilo-code.deniedCommands": [],
+  "terminal.integrated.commandsToSkipShell": [
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal",
+    "kilo-code.new.agentManager.runScript",
+  ],
+  "claudeCode.preferredLocation": "panel",
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "docker-desktop",
+  ],
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+}

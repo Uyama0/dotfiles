@@ -1,0 +1,8 @@
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[credential]
+	helper = cache
+[include]
+	path = ~/.gitconfig.work

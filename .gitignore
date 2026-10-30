@@ -6,3 +6,11 @@ vim/pack/minpac/start
 job-specific.sh
 scripts/dark-mode-notify
 bin/format-transactions.js
+# secrets live in ~/.secrets.zsh, never here
+secrets.zsh
+*.secrets.zsh
+*.backup
+
+# work layer — separate private repo, never pushed here
+work/
+__pycache__/

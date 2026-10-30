@@ -1,0 +1,20 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# secrets (not in git): API keys, tokens, passwords
+[ -f "$HOME/.secrets.zsh" ] && source "$HOME/.secrets.zsh"
+
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+# Setting PATH for Python 3.13
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+export PATH
+
+# work profile (not in public repo)
+[ -f "$HOME/.zprofile.work" ] && source "$HOME/.zprofile.work"
+
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+
