@@ -12,6 +12,7 @@ brew "nvm"
 brew "node"
 brew "zsh-autosuggestions"
 brew "rtk"
+brew "opencode"
 brew "mas"          # App Store CLI
 
 # --- dev ---
@@ -34,6 +35,7 @@ cask "google-chrome"
 cask "firefox"
 cask "visual-studio-code"
 cask "claude"
+cask "chatgpt"
 cask "docker-desktop"
 cask "dbeaver-community"
 cask "postman"

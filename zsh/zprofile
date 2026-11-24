@@ -1,4 +1,9 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Apple Silicon and Intel Homebrew installations.
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # secrets (not in git): API keys, tokens, passwords
 [ -f "$HOME/.secrets.zsh" ] && source "$HOME/.secrets.zsh"
@@ -15,6 +20,10 @@ export PATH
 # work profile (not in public repo)
 [ -f "$HOME/.zprofile.work" ] && source "$HOME/.zprofile.work"
 
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+if [ -n "${HOMEBREW_PREFIX:-}" ]; then
+  export PATH="$HOMEBREW_PREFIX/opt/openjdk@21/bin:$PATH"
+  export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+fi
+
+RAIP_PROFILE_LOADED=1
 

@@ -10,6 +10,7 @@ bin/format-transactions.js
 secrets.zsh
 *.secrets.zsh
 *.backup
+*.backup.*
 
 # work layer — separate private repo, never pushed here
 work/

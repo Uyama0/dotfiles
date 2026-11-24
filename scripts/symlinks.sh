@@ -2,7 +2,7 @@
 # Creates symlinks described in */*.link files under ROOT (first arg, default: repo root).
 # The work/ layer is skipped unless ROOT points into it.
 # Each line: <source>=<target>, $DOTFILES and $HOME are expanded.
-# Existing files at the target are moved to <target>.backup.
+# Existing files are moved to unique backups; missing sources fail before any changes.
 
 set -euo pipefail
 
@@ -28,7 +28,20 @@ expand() {
   echo "$p"
 }
 
-find "$ROOT" -name '*.link' -not -path '*/.git/*' ${skip[@]+"${skip[@]}"} | sort | while read -r linkfile; do
+# Preflight every source before touching existing configs.
+find "$ROOT" -name '*.link' -not -path '*/.git/*' ${skip[@]+"${skip[@]}"} | sort | while IFS= read -r linkfile; do
+  while IFS='=' read -r src tgt || [ -n "$src" ]; do
+    [[ -z "${src// }" || "$src" =~ ^[[:space:]]*# ]] && continue
+    src="$(expand "$src")"
+    tgt="$(expand "$tgt")"
+    [ -n "$src" ] && [ -n "$tgt" ] && [ -e "$src" ] || {
+      echo "error   invalid link or missing source in $linkfile: $src" >&2
+      exit 1
+    }
+  done < "$linkfile"
+done
+
+find "$ROOT" -name '*.link' -not -path '*/.git/*' ${skip[@]+"${skip[@]}"} | sort | while IFS= read -r linkfile; do
   while IFS='=' read -r src tgt || [ -n "$src" ]; do
     [[ -z "${src// }" || "$src" =~ ^[[:space:]]*# ]] && continue
 
@@ -41,8 +54,14 @@ find "$ROOT" -name '*.link' -not -path '*/.git/*' ${skip[@]+"${skip[@]}"} | sort
     fi
 
     if [ -e "$tgt" ] || [ -L "$tgt" ]; then
-      mv "$tgt" "$tgt.backup"
-      echo "backup  $tgt -> $tgt.backup"
+      backup="$tgt.backup"
+      i=1
+      while [ -e "$backup" ] || [ -L "$backup" ]; do
+        backup="$tgt.backup.$i"
+        i=$((i + 1))
+      done
+      mv "$tgt" "$backup"
+      echo "backup  $tgt -> $backup"
     fi
 
     mkdir -p "$(dirname "$tgt")"

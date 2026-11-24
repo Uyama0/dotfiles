@@ -1,3 +1,8 @@
+# Interactive non-login terminals need the same environment as login terminals.
+if [ -z "${RAIP_PROFILE_LOADED:-}" ] && ! [[ -o login ]]; then
+  [ -f "$HOME/.zprofile" ] && source "$HOME/.zprofile"
+fi
+
 # eza - a modern replacement for ls
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -lh --icons'          # detailed list
@@ -8,11 +13,10 @@ alias lt='eza --tree --icons'       # tree output
 alias c='clear'
 alias ..='cd ..'
 
-alias pip=/usr/local/bin/pip3
+alias pip='python3 -m pip'
 
 [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # aliases (path resolved through the ~/.zshrc symlink)
 source "${${(%):-%x}:A:h}/aliases.zsh"
